@@ -1,0 +1,1 @@
+/home/user/Documents/Rust/my_app/target/debug/my_app: /home/user/Documents/Rust/my_app/src/coins.rs /home/user/Documents/Rust/my_app/src/inventory.rs /home/user/Documents/Rust/my_app/src/item_info.rs /home/user/Documents/Rust/my_app/src/main.rs /home/user/Documents/Rust/my_app/src/player_stats.rs /home/user/Documents/Rust/my_app/src/shop.rs

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["create","main"],"mod":["coins","inventory","item_info","player_stats","shop"]};

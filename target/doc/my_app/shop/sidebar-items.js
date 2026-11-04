@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["buy_item","sell_item"]};
