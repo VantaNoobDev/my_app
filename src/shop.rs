@@ -2,15 +2,13 @@ use crate::player_stats::PlayerStats;
 use crate::item_info as info;
 use crate::options::Options;
 
-#[allow(dead_code)] // This suppresses warnings for unused code, as the Shop struct is not used in the current implementation, but it may be useful for future features.
 pub struct Shop {
     pub items: Vec<info::Item>,
     pub options: Options,
 }
 
-#[allow(dead_code)] // This function is not used in the current implementation, but it may be useful for future features.
 pub fn buy_item(player: &mut PlayerStats, item_name: &str) -> bool {
-    let Some(item) = info::get_item(&info::Item { name: item_name.into(), buy_price: 0, sell_price: 0 }) else {
+    let Some(item) = info::get_item(item_name) else {
         println!("Unknown item: {item_name}");
         return false;
     };
@@ -25,9 +23,8 @@ pub fn buy_item(player: &mut PlayerStats, item_name: &str) -> bool {
     true
 }
 
-#[allow(dead_code)] // This function is not used in the current implementation, but it may be useful for future features.
 pub fn sell_item(player: &mut PlayerStats, item_name: &str) -> bool {
-    let Some(item) = info::get_item(&info::Item { name: item_name.into(), buy_price: 0, sell_price: 0 }) else {
+    let Some(item) = info::get_item(item_name) else {
         println!("Unknown item: {item_name}");
         return false;
     };

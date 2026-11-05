@@ -4,15 +4,14 @@ pub struct ItemInfo {
     pub sell_price: u32,
 }
 
-#[allow(dead_code)] // Suppresses warnings for unused code
 pub struct Item {
     pub name: String,
     pub buy_price: u32,
     pub sell_price: u32,
 }
 
-pub fn get_item(item: &Item) -> Option<ItemInfo> { // Returns an Option containing ItemInfo if the item is recognized, or None if it's not
-    match item.name.as_str() {
+pub fn get_item(name: &str) -> Option<ItemInfo> {
+    match name {
         "Potion" => Some(ItemInfo {
             name: "Potion",
             buy_price: 4,
@@ -33,8 +32,7 @@ mod tests {
 
     #[test]
     fn test_get_item() { // Tests the get_item function for a known item
-        let potion = Item { name: "Potion".into(), buy_price: 4, sell_price: 2 };
-        let potion_info = get_item(&potion).unwrap();
+        let potion_info = get_item("Potion").unwrap();
         assert_eq!(potion_info.name, "Potion");
         assert_eq!(potion_info.buy_price, 4);
         assert_eq!(potion_info.sell_price, 2);
@@ -42,8 +40,7 @@ mod tests {
 
     #[test]
     fn test_get_unknown_item() { // Tests the get_item function for an unknown item
-        let unknown_item = Item { name: "Unknown".into(), buy_price: 0, sell_price: 0 };
-        let unknown_info = get_item(&unknown_item);
+        let unknown_info = get_item("Unknown");
         assert!(unknown_info.is_none());
     }
 }

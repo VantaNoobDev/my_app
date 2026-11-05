@@ -1,2 +1,2 @@
-createSrcSidebar('[["my_app",["",[],["coins.rs","inventory.rs","item_info.rs","main.rs","player_stats.rs","shop.rs"]]],["my_app",["",[],["main.rs"]]]]');
-//{"start":19,"fragment_lengths":[99,31]}
+createSrcSidebar('[["my_app",["",[],["coins.rs","configuration.rs","inventory.rs","item_info.rs","main.rs","options.rs","player_stats.rs","shop.rs"]]],["my_app",["",[],["coins.rs","inventory.rs","item_info.rs","main.rs","player_stats.rs","shop.rs"]]],["my_app",["",[],["main.rs"]]]]');
+//{"start":19,"fragment_lengths":[131,100,31]}

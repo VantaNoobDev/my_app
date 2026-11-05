@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["get_item"],"struct":["ItemInfo"]};
+window.SIDEBAR_ITEMS = {"fn":["get_item"],"struct":["Item","ItemInfo"]};

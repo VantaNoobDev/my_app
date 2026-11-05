@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["create","main"],"mod":["coins","inventory","item_info","player_stats","shop"]};
+window.SIDEBAR_ITEMS = {"fn":["create","main"],"mod":["coins","configuration","inventory","item_info","options","player_stats","shop"]};

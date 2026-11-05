@@ -10,7 +10,6 @@ use coins::Coins;
 use inventory::Inventory;
 use player_stats::PlayerStats;
 use options::Options;
-use configuration::Configuration;
 
 fn create() -> PlayerStats { // Creates a new PlayerStats instance with default values
     PlayerStats {
@@ -35,14 +34,12 @@ fn main() { // Entry point of the application, where the main logic is executed
 
     //println!("Coins left: {}", player_stats.coins.get_coins());
 
-    let configuration = Configuration 
-    { 
-        options: Options::default(),
-        sound_effects: true,
-        music: true,
-        notifications: true
-    };
+    let configuration = configuration::load_configuration();
 
-    configuration.options.display_options();
-    player_stats.load();
+    configuration::display_configuration(&configuration);
+    configuration::save_configuration(&configuration);
+
+    if let Err(error) = player_stats.load() {
+        eprintln!("Failed to load player stats: {error}");
+    }
 }

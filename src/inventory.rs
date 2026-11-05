@@ -21,7 +21,6 @@ impl Inventory {
         &self.items
     }
 
-    #[allow(dead_code)] // Suppresses warnings for unused functions that are defined but not called in the current context
     pub fn set_items(&mut self, items: Vec<String>) { // Sets the items vector to a new vector of items, replacing the current inventory
         self.items = items;
     }
@@ -30,7 +29,6 @@ impl Inventory {
         self.items.clear();
     }
 
-    #[allow(dead_code)] // Suppresses warnings for unused functions that are defined but not called in the current context
     pub fn has_item(&self, item: &str) -> bool { // Checks if the inventory contains a specific item by using the any method on the items vector, returning true if the item is found and false otherwise
         self.items.iter().any(|x| x == item)
     }

@@ -1,0 +1,6 @@
+Sound Effects: On
+Music: On
+Notifications: On
+Difficulty: Normal
+Graphics Quality: High
+Sound Volume: 100
