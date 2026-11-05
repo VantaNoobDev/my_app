@@ -1,8 +1,16 @@
 use crate::player_stats::PlayerStats;
 use crate::item_info as info;
+use crate::options::Options;
 
+#[allow(dead_code)] // This suppresses warnings for unused code, as the Shop struct is not used in the current implementation, but it may be useful for future features.
+pub struct Shop {
+    pub items: Vec<info::Item>,
+    pub options: Options,
+}
+
+#[allow(dead_code)] // This function is not used in the current implementation, but it may be useful for future features.
 pub fn buy_item(player: &mut PlayerStats, item_name: &str) -> bool {
-    let Some(item) = info::get_item(item_name) else {
+    let Some(item) = info::get_item(&info::Item { name: item_name.into(), buy_price: 0, sell_price: 0 }) else {
         println!("Unknown item: {item_name}");
         return false;
     };
@@ -17,8 +25,9 @@ pub fn buy_item(player: &mut PlayerStats, item_name: &str) -> bool {
     true
 }
 
+#[allow(dead_code)] // This function is not used in the current implementation, but it may be useful for future features.
 pub fn sell_item(player: &mut PlayerStats, item_name: &str) -> bool {
-    let Some(item) = info::get_item(item_name) else {
+    let Some(item) = info::get_item(&info::Item { name: item_name.into(), buy_price: 0, sell_price: 0 }) else {
         println!("Unknown item: {item_name}");
         return false;
     };
@@ -39,15 +48,16 @@ mod tests {
     use crate::coins::Coins;
     use crate::inventory::Inventory;
 
-    fn make_player(coins: u32) -> PlayerStats {
+    fn make_player(coins: u32) -> PlayerStats { // Helper function to create a PlayerStats instance with a specified amount of coins
         PlayerStats {
             coins: Coins { amount: coins },
             inventory: Inventory { items: Vec::new() },
+            options: Options::default(),
         }
     }
 
     #[test]
-    fn buy_item_works() {
+    fn buy_item_works() { // Test that buying an item works correctly
         let mut player = make_player(10);
 
         assert!(buy_item(&mut player, "Potion"));
@@ -56,7 +66,7 @@ mod tests {
     }
 
     #[test]
-    fn cannot_buy_without_enough_coins() {
+    fn cannot_buy_without_enough_coins() { // Test that a player cannot buy an item if they don't have enough coins
         let mut player = make_player(3);
 
         assert!(!buy_item(&mut player, "Potion"));
@@ -65,7 +75,7 @@ mod tests {
     }
 
     #[test]
-    fn sell_item_works() {
+    fn sell_item_works() { // Test that selling an item works correctly
         let mut player = make_player(10);
         player.inventory.add_item("Potion".to_string());
 

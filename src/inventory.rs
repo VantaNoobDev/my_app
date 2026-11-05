@@ -3,11 +3,11 @@ pub struct Inventory {
 }
 
 impl Inventory {
-    pub fn add_item(&mut self, item: String) {
+    pub fn add_item(&mut self, item: String) { // Adds an item to the inventory by pushing it onto the items vector
         self.items.push(item);
     }
 
-    pub fn remove_item(&mut self, item: &str) -> bool {
+    pub fn remove_item(&mut self, item: &str) -> bool { // Removes an item from the inventory if it exists, returning true if successful and false if the item was not found
         if let Some(pos) = self.items.iter().position(|x| x == item) {
             self.items.remove(pos);
             true
@@ -17,19 +17,21 @@ impl Inventory {
         }
     }
 
-    pub fn get_items(&self) -> &[String] {
+    pub fn get_items(&self) -> &[String] { // Returns a slice of the items vector, allowing read-only access to the inventory items
         &self.items
     }
 
-    pub fn set_items(&mut self, items: Vec<String>) {
+    #[allow(dead_code)] // Suppresses warnings for unused functions that are defined but not called in the current context
+    pub fn set_items(&mut self, items: Vec<String>) { // Sets the items vector to a new vector of items, replacing the current inventory
         self.items = items;
     }
 
-    pub fn clear_inventory(&mut self) {
+    pub fn clear_inventory(&mut self) { // Clears all items from the inventory by calling the clear method on the items vector
         self.items.clear();
     }
 
-    pub fn has_item(&self, item: &str) -> bool {
+    #[allow(dead_code)] // Suppresses warnings for unused functions that are defined but not called in the current context
+    pub fn has_item(&self, item: &str) -> bool { // Checks if the inventory contains a specific item by using the any method on the items vector, returning true if the item is found and false otherwise
         self.items.iter().any(|x| x == item)
     }
 }
@@ -39,7 +41,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn inventory_add_remove_works() {
+    fn inventory_add_remove_works() { // Tests the add_item and remove_item methods of the Inventory struct to ensure that items can be added and removed correctly
         let mut inventory = Inventory { items: Vec::new() };
 
         inventory.add_item("Sword".to_string());
@@ -50,7 +52,7 @@ mod tests {
     }
 
     #[test]
-    fn inventory_clear_works() {
+    fn inventory_clear_works() { // Tests the clear_inventory method of the Inventory struct to ensure that all items can be removed from the inventory
         let mut inventory = Inventory { items: Vec::new() };
 
         inventory.add_item("Sword".to_string());
@@ -60,7 +62,7 @@ mod tests {
     }
 
     #[test]
-    fn inventory_set_get_works() {
+    fn inventory_set_get_works() { // Tests the set_items and get_items methods of the Inventory struct to ensure that items can be set and retrieved correctly
         let mut inventory = Inventory { items: Vec::new() };
 
         inventory.set_items(vec![
